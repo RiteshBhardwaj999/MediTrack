@@ -133,6 +133,26 @@ public class Main {
                 case 6:
                     appointmentService.viewAppointments();
                     break;
+                case 7:
+                    System.out.println("Select Specialization:");
+                    specs = Specialization.values();
+
+                    for (int i = 0; i < specs.length; i++) {
+                        System.out.println((i + 1) + ". " + specs[i]);
+                    }
+
+                    int choiceSpec = sc.nextInt();
+
+                    if (choiceSpec < 1 || choiceSpec > specs.length) {
+                        System.out.println("Invalid choice");
+                        break;
+                    }
+
+                    Specialization selected = specs[choiceSpec - 1];
+
+                    doctorService.searchBySpecialization(selected)
+                            .forEach(Doctor::display);
+                    break;
 
                 case 0:
                     System.exit(0);

@@ -38,6 +38,13 @@ public class CSVUtil {
             e.printStackTrace();
         }
     }
+    private static void ensureDirectoryExists(String path) {
+        File file = new File(path);
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs();
+        }
+    }
 
 
     public static List<Doctor> loadDoctors() {
